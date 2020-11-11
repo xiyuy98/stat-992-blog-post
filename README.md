@@ -141,7 +141,17 @@ the most common words from the list by anti-joining the stopwords dataset
 provided by tidytext.
 
 ```{r}
+# edge list
+df$abstract = str_replace_all(df$abstract, "[:digit:]", "")
 
+edgeList = df %>% 
+  select(id, abstract) %>% 
+  unnest_tokens(word, abstract) %>% 
+  anti_join(stop_words) %>% 
+  rename(abstract = word) %>% 
+  left_join(identifiers, by = "id") %>% 
+  select(identifier, abstract) %>% 
+  rename(id = identifier)
 ```
 
 We will not apply VSP on this matrix. Instead, we will use this matrix as an
@@ -163,7 +173,16 @@ algorithm when the matrix is sparse.
 We Apply function vsp() and set rank $k = 3$ for $A$ ($\hat{A}$, respectively).
 
 ```{r}
+# apply vsp
+fa_out = vsp(A_out, rank = 6, scale = TRUE, rescale = FALSE)
+plot_varimax_z_pairs(fa_out, 1:6)
 
+fa_in = vsp(A_in, rank = 5, scale = TRUE, rescale = FALSE)
+plot_varimax_z_pairs(fa_in, 1:5)
+
+# scree plots
+plot(fa_out$d)
+plot(fa_in$d)
 ```
 
 ### 2.3 Clustering by BFF
