@@ -1,5 +1,11 @@
 # Blog post: an example on Vintage Sparse PCA
 
+---
+author:
+- name: Shuqi Yu
+- name: Xiyu Yang
+---
+
 ## 1 The background and main question
 
 Semantic Scholar Open Research Corpus contains research papers published in
@@ -37,7 +43,7 @@ step.
 Using function processDataFiles(includeLine, processLine, outputPath) for scanning 
 through the raw data.
 
-*If x is a line of data, then the function includeLine(x) indicates whether this line should be processed. In the following example, if the abstract of the data contains the phrase, "false discovery rate", regardless of its letter case, the line of data will be processed.
+* If x is a line of data, then the function includeLine(x) indicates whether this line should be processed. In the following example, if the abstract of the data contains the phrase, "false discovery rate", regardless of its letter case, the line of data will be processed.
 
 * If includeLine(x)=T, then processLine(x) is written to a new line of data/outputPath/xxx.csv where xxx is the name of the file from which x was drawn.
 The processLine(x) function below converts the data into a tibble with
