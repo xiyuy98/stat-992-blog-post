@@ -215,8 +215,12 @@ title, abstract, year, field, author, inCitation, outCitation, journalName, jour
 Figure 1: The histogram of year of the target dataset: the first paper is released
 in 1995 and there is a clear increase trend along the time.
 
+![alt text]
+
 After the clustering by vsp, we show the scree plots with rank $k = 30$ in
 Figure 2.
+
+![alt text](https://github.com/xiyuy98/stat-992-blog-post.git/screeplot_in_(rank=30).png)
 
 Figure 2: The scree plots with rank 30. The figure on left corresponds to the
 inCitaion adjacent matrix $A$, the figure on right corresponds to the outCitaion
@@ -254,6 +258,9 @@ For the outCitation network, we find 7 meaningful clusters(see Figure 5).
 These two clustering results are consistent since V1&V6 in Figure 5 is in statistics 
 field and V3-V5&V7 are in genetics field. However the latter one provide more 
 detailed clusters.
+
+Inspired the bag-of-words results above, we redo the vsp on the outCitation
+adjacent matrix with rank 7.
 
 Figure 5: The bag-of-words reults with k = 7. Each column contains the top
 twenty representative words in the cluster.
