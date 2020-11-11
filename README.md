@@ -85,7 +85,7 @@ processDataFiles(includeLine, processLine, outputPath)
 
 ### 2.2 Clustering by VSP
 
-**STEP 1**: We construct the adjacent matrix $A$ of paper-inCitations network,
+**STEP 1**: We construct the adjacent matrix $ A $ of paper-inCitations network,
 namely,
 
 $$A_{ij} = \mathbb{1} (\text{Paper } i \text{ is cited by paper } j)$$
