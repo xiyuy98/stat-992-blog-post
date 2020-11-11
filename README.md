@@ -93,12 +93,43 @@ $$A_{ij} = \mathbb{1} (\text{Paper } i \text{ is cited by paper } j)$$
 We achieve this by building the vertex set $E$ and edge set $V$ , and combine them
 using function cast_sparse():
 
-```{r}
+```r
+# identifier
+inCitations = df %>% 
+  select(inCitation) %>% 
+  unnest_tokens(word, inCitation) %>% 
+  rename(id = word)
 
+paper_ids = df %>% 
+  select(id) %>% 
+  rbind(inCitations) %>% 
+  unique()
+
+identifiers_in = paper_ids %>% 
+  mutate(identifier_in = 1:nrow(paper_ids))
+
+# edge list
+edgeList_in = df %>% 
+  select(id, inCitation) %>% 
+  unnest_tokens(word, inCitation) %>% 
+  rename(inCitation = word) %>% 
+  left_join(identifiers_in, by = "id") %>% 
+  select(identifier_in, inCitation) %>% 
+  rename(id = identifier_in)
+
+edgeList_in = edgeList_in %>% 
+  left_join(identifiers_in, by=c("inCitation" = "id")) %>% 
+  select(id, identifier_in) %>% 
+  rename(inCitation = identifier_in)
+
+# adjacency matrix
+adjMatrix = cast_sparse(edgeList_in, id, inCitation)
 ```
 
 **STEP 2**: We repeat this step and construct the the adjacent matrix $\hat{A}$ of
 paper-outCitations network,
+
+$$\hat{A}_{ij} = \mathbb{1} (\text{Paper } i \text{ cites paper } j)$$
 
 **STEP 3**: We repeat the above step and build the the adjacent matrix $\tilde{A}$ of
 paper-abstract network,
