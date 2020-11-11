@@ -52,6 +52,29 @@ this paper (inCitation), list of paper IDs which this paper cited (outCitation),
 journal where this paper was published, the pages of the journal where
 this paper was published.
 
+```{r}
+includeLine = function(x) {
+  if(nchar(x$paperAbstract) == 0) return(F) 
+  grepl("false discovery rate|False Discovery Rate|False discovery rate", x$paperAbstract)
+}
+
+processLine = function(x) tibble(
+  id = x$id,
+  title = x$title,
+  abstract = x$paperAbstract,
+  year = x$year,
+  field = paste(x$fieldsOfStudy, collapse='; '),
+  author = paste(x$authors, collapse='; '),
+  inCitation = paste(x$inCitations, collapse='; '),
+  outCitation = paste(x$outCitations, collapse='; '),
+  journalName = x$journalName,
+  journalVolume = x$journalVolume,
+  journalPages = x$journalPages)
+  
+outputPath = "FDR"
+processDataFiles(includeLine, processLine, outputPath)
+```
+
 ### 2.2 Clustering by VSP
 
 **STEP 1**: We construct the adjacent matrix $A$ of paper-inCitations network,
