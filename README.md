@@ -80,8 +80,10 @@ processDataFiles(includeLine, processLine, outputPath)
 **STEP 1**: We construct the adjacent matrix $A$ of paper-inCitations network,
 namely,
 
+$$A_{ij} = \mathbb{1} (\text{Paper } i \text{ is cited by paper } j)$$
+
 We achieve this by building the vertex set $E$ and edge set $V$ , and combine them
-using function cast sparse():
+using function cast_sparse():
 
 ```{r}
 
