@@ -140,7 +140,7 @@ unnest tokens(word, text) function from R package, tidytext. We then remove
 the most common words from the list by anti-joining the stopwords dataset
 provided by tidytext.
 
-```{r}
+```r
 # edge list
 df$abstract = str_replace_all(df$abstract, "[:digit:]", "")
 
@@ -172,7 +172,7 @@ algorithm when the matrix is sparse.
 
 We Apply function vsp() and set rank $k = 3$ for $A$ ($\hat{A}$, respectively).
 
-```{r}
+```r
 # apply vsp
 fa_out = vsp(A_out, rank = 6, scale = TRUE, rescale = FALSE)
 plot_varimax_z_pairs(fa_out, 1:6)
@@ -194,7 +194,7 @@ the difference of proportion of abstracts containing some words or not.
 
 **Step1**: we simplify the inCitation adjacent matrix $A$ and apply the function bff().
 
-```{r}
+```r
 
 ```
 
