@@ -48,17 +48,17 @@ through the raw data.
 The processLine(x) function below converts the data into a tibble with
 eleven columns: 
 
-+ paper ID
-+ paper title
-+ abstract
-+ published year
-+ fields of study
-+ list of author IDs and names
-+ list of paper IDs which cited this paper (inCitation)
-+ list of paper IDs which this paper cited (outCitation)
-+ name of the journal that published this paper
-+ the volume of the journal where this paper was published
-+ the pages of the journal where this paper was published.
+  + paper ID
+  + paper title
+  + abstract
+  + published year
+  + fields of study
+  + list of author IDs and names
+  + list of paper IDs which cited this paper (inCitation)
+  + list of paper IDs which this paper cited (outCitation)
+  + name of the journal that published this paper
+  + the volume of the journal where this paper was published
+  + the pages of the journal where this paper was published.
 
 ```r
 includeLine = function(x) {
