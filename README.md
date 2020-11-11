@@ -195,7 +195,14 @@ the difference of proportion of abstracts containing some words or not.
 **Step1**: we simplify the inCitation adjacent matrix $A$ and apply the function bff().
 
 ```r
+# simplify matrix, A_abs, for bff on incitations
+id_in = edgeList_in %>% select(id) %>% unique()
+id_in = id_in$id
+A_abs_in = A_abs[id_in, ]
 
+# apply bff on inCitation adjacency matrix
+keypapers_in = bff(fa_in$Z, A_abs_in, 20) %>% t ## cluster by rows (fa$Z)
+keypapers_in %>% t %>% View
 ```
 
 **Step2**: we repeat the previous step on outCitation adjacent matrix $\hat{A}$.
