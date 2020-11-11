@@ -220,7 +220,7 @@ in 1995 and there is a clear increase trend along the time.
 After the clustering by vsp, we show the scree plots with rank $k = 30$ in
 Figure 2.
 
-![GitHub Logo](screeplot_in_(rank=30).png)
+![GitHub Logo](/images/screeplot_in_(rank=30).png)(/images/screeplot_out_(rank=30).png)
 
 Figure 2: The scree plots with rank 30. The figure on left corresponds to the
 inCitaion adjacent matrix $A$, the figure on right corresponds to the outCitaion
