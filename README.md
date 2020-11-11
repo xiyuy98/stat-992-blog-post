@@ -1,9 +1,8 @@
 # Blog post: an example on Vintage Sparse PCA
 
 ---
-author:
-- name: Shuqi Yu
-- name: Xiyu Yang
+Stats 992 Class Project
+Shuqi Yu & Xiyu Yang
 ---
 
 ## 1 The background and main question
