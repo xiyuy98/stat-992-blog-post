@@ -316,7 +316,9 @@ For the outCitation network, we find 7 meaningful clusters(see Table 2).
 |probability|searching|degs|conditional|associations|penalty|cord|
 |values|sequest|transcription|disease|mapping|asymptotic|maternal|
 
-*Table 2: The bag-of-words reults with k = 7. Each column contains the top twenty representative words in the cluster.*
+*Table 2: The bag-of-words reults with k = 7.*
+*Each column contains the top twenty representative*
+*words in the cluster.*
 
 These two clustering results are consistent since V1&V6 in Table 2 is in statistics 
 field and V3-V5&V7 are in genetics field. However the latter one provide more 
@@ -327,7 +329,8 @@ adjacent matrix with rank 7.
 
 ![GitHub Logo](/images/vsp_out_(rank=7).png)
 
-*Figure 4:  The scatter plots for the seven leading principal components corresponds to the outCitaion adjacent matrix $\hat{A}$.*
+*Figure 4:  The scatter plots for the seven leading principal *
+*components corresponds to the outCitaion adjacent matrix $\hat{A}$.*
 
 
 ## References
