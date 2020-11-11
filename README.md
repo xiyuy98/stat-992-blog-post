@@ -253,8 +253,26 @@ For the inCitation network, we find 3 meaningful clusters(see Table 1).
 
 |V1|V2|V3|
 |:--------:|:--------:|:--------:|
-||||
-||||
+|hypotheses|peptide|conditional|
+|procedures|identifications|gwas|
+|null|peptides|loci|
+|procedure|spectra|shared|
+|controlling|proteomics|pleiotropic|
+|testing|search|summary|
+|proportion|decoy|wide|
+|error|mass|overlap|
+|problem|database|pleiotropy|
+|statistics|matches|enrichment|
+|benjamini|spectrum|genetic|
+|hochberg|tandem|epidemiological|
+|true|spectrometry|genome|
+|proposed|ms|schizophrenia|
+|power|identification|polygenic|
+|rejections|protein|phenotypes|
+|rejected|proteins|statistics|
+|dependence|shotgun|association|
+|simulation|engines|conjunctional|
+|paper|proteomic|snps|
 
 
 Table 1: The bag-of-words reults with k = 3. Each column contains the top
