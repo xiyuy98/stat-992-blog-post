@@ -215,8 +215,6 @@ title, abstract, year, field, author, inCitation, outCitation, journalName, jour
 Figure 1: The histogram of year of the target dataset: the first paper is released
 in 1995 and there is a clear increase trend along the time.
 
-![alt text]
-
 After the clustering by vsp, we show the scree plots with rank $k = 30$ in
 Figure 2.
 
@@ -237,9 +235,13 @@ the rank greater than 3. Indeed, it's unreliable to guess the rank k by simply
 observing the gap on the scree plot, so we redo the clustering by analyzing the
 paper abstracts using bag-of-words, and we don't mind the eigengap in this way.
 
-Figure 3: The scatter plots for the three leading principal components. The
-figure on left corresponds to the inCitaion adjacent matrix $A$, the figure on
-right corresponds to the outCitaion adjacent matrix $\hat{A}$.
+![GitHub Logo](images/vsp_in_(rank=3).png))
+
+![GitHub Logo](images/vsp_out_(rank=3).png)
+
+Figure 3: The scatter plots for the three leading principal components. The first
+figure corresponds to the inCitaion adjacent matrix $A$, the second figure 
+corresponds to the outCitaion adjacent matrix $\hat{A}$.
 
 For the inCitation network, we find 3 meaningful clusters(see Figure 4).
 
