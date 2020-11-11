@@ -23,3 +23,6 @@ networks using bag-of-words representation of the abstracts (BFF). Finally, we
 do the comparison across the classes, such as the class size, the first published
 year and the regression along the time (in the next step toward the project).
 
+```{r}
+x = 2 + 3
+```
