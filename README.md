@@ -116,3 +116,28 @@ the difference of proportion of abstracts containing some words or not.
 ```
 
 **Step2**: we repeat the previous step on outCitation adjacent matrix $\hat{A}$.
+
+## 3 The results
+
+Our target dataset(see Figture 1) contains 8787 papers with 11 variables: id,
+title, abstract, year, field, author, inCitation, outCitation, journalName, journalVolume, journalPages.
+
+Figure 1: The histogram of year of the target dataset: the first paper is released
+in 1995 and there is a clear increase trend along the time.
+
+After the clustering by vsp, we show the scree plots with rank $k = 30$ in
+Figure 2.
+
+Figure 2: The scree plots with rank 30. The figure on left corresponds to the
+inCitaion adjacent matrix $A$, the figure on right corresponds to the outCitaion
+adjacent matrix $\hat{A}$.
+
+They both have a gap between the third and the forth eigenvalue, so there
+are at least 3 reasonable classes here. We can pick $k = 3$, and plot their top
+three principal components in Figure 3. For the figure on the left, there are clear
+$L$???shapes in each scatter plots. However for the figure on the right, the scatter
+plot on the left bottom corner doesn't have a prefect $L$???shape which indicates
+the rank greater than 3. Indeed, it's unreliable to guess the rank k by simply
+observing the gap on the scree plot, so we redo the clustering by analyzing the
+paper abstracts using bag-of-words, and we don't mind the eigengap in this way.
+
