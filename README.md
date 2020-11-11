@@ -1,8 +1,8 @@
 # Blog post: an example on Vintage Sparse PCA
 
 ---
-- Stats 992 Class Project
-- Shuqi Yu & Xiyu Yang
+Stats 992 Class Project \\
+Shuqi Yu & Xiyu Yang
 ---
 
 ## 1 The background and main question
@@ -51,3 +51,68 @@ fields of study, list of author IDs and names, list of paper IDs which cited
 this paper (inCitation), list of paper IDs which this paper cited (outCitation), name of the journal that published this paper, the volume of the
 journal where this paper was published, the pages of the journal where
 this paper was published.
+
+### 2.2 Clustering by VSP
+
+**STEP 1**: We construct the adjacent matrix $A$ of paper-inCitations network,
+namely,
+
+We achieve this by building the vertex set $E$ and edge set $V$ , and combine them
+using function cast sparse():
+
+```{r}
+
+```
+
+**STEP 2**: We repeat this step and construct the the adjacent matrix $\hat{A}$ of
+paper-outCitations network,
+
+**STEP 3**: We repeat the above step and build the the adjacent matrix $\tilde{A}$ of
+paper-abstract network,
+
+To construct this matrix, we first remove all the numbers from the abstracts
+in the data set. Next, we convert abstracts into tokens (words) using the
+unnest tokens(word, text) function from R package, tidytext. We then remove
+the most common words from the list by anti-joining the stopwords dataset
+provided by tidytext.
+
+```{r}
+
+```
+
+We will not apply VSP on this matrix. Instead, we will use this matrix as an
+external information to illustrate the features of clusters in paper-inCitations
+network and paper-outCitations network.
+
+**STEP 4**: Finally, we apply the VSP on the adjacency matrix $A$ (and $\hat{A}$ respectively).
+
+The VSP is a spectral method that combines principal components analysis
+(PCA) with the varimax rotation. This algorithm was introduced by Rohe and
+Zeng [2] recently and there is a R package available on GitHub. Under mild
+assumptions, the VSP estimator is consistent for degree-corrected Stochastic
+Blockmodels. Roughly, the algorithm contains three steps: centering the matrix; 
+applying singular value decomposition(SVD) to get the top k left and right
+singular vectors; rotating these singular vectors to achieve the maximize 
+Varimax. The centering step is optimal, but it can surprising speed up the 
+algorithm when the matrix is sparse.
+
+We Apply function vsp() and set rank $k = 3$ for $A$ ($\hat{A}$, respectively).
+
+```{r}
+
+```
+
+### 2.3 Clustering by BFF
+
+By using BFF, we partition citation graph and interpret the clusters by analyzing 
+the paper abstracts using bag-of-words. This algorithm was introduced by
+Wang and Rohe [3]. The main idea of BFF is finding the clusters that maximize
+the difference of proportion of abstracts containing some words or not.
+
+**Step1**: we simplify the inCitation adjacent matrix $A$ and apply the function bff().
+
+```{r}
+
+```
+
+**Step2**: we repeat the previous step on outCitation adjacent matrix $\hat{A}$.
