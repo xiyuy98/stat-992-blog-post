@@ -46,11 +46,19 @@ through the raw data.
 
 * If includeLine(x)=T, then processLine(x) is written to a new line of data/outputPath/xxx.csv where xxx is the name of the file from which x was drawn.
 The processLine(x) function below converts the data into a tibble with
-eleven columns, including paper ID, paper title, abstract, published year,
-fields of study, list of author IDs and names, list of paper IDs which cited
-this paper (inCitation), list of paper IDs which this paper cited (outCitation), name of the journal that published this paper, the volume of the
-journal where this paper was published, the pages of the journal where
-this paper was published.
+eleven columns: 
+
++ paper ID
++ paper title
++ abstract
++ published year
++ fields of study
++ list of author IDs and names
++ list of paper IDs which cited this paper (inCitation)
++ list of paper IDs which this paper cited (outCitation)
++ name of the journal that published this paper
++ the volume of the journal where this paper was published
++ the pages of the journal where this paper was published.
 
 ```r
 includeLine = function(x) {
