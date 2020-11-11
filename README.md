@@ -52,8 +52,7 @@ this paper (inCitation), list of paper IDs which this paper cited (outCitation),
 journal where this paper was published, the pages of the journal where
 this paper was published.
 
-```
-
+```r
 includeLine = function(x) {
   if(nchar(x$paperAbstract) == 0) return(F) 
   grepl("false discovery rate|False Discovery Rate|False discovery rate", x$paperAbstract)
