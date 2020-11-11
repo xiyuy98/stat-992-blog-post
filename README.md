@@ -251,6 +251,10 @@ For the inCitation network, we find 3 meaningful clusters(see Table 1).
 * V2: proteomics
 * V3: genetics
 
+|V1|V2|V3|
+|:--------:|:--------:|:--------:|
+||||
+||||
 
 
 Table 1: The bag-of-words reults with k = 3. Each column contains the top
