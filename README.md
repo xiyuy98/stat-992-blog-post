@@ -235,9 +235,9 @@ the rank greater than 3. Indeed, it's unreliable to guess the rank k by simply
 observing the gap on the scree plot, so we redo the clustering by analyzing the
 paper abstracts using bag-of-words, and we don't mind the eigengap in this way.
 
-![GitHub Logo](images/vsp_in_(rank=3).png))
+![GitHub Logo](/images/vsp_in_(rank=3).png)
 
-![GitHub Logo](images/vsp_out_(rank=3).png)
+![GitHub Logo](/images/vsp_out_(rank=3).png)
 
 Figure 3: The scatter plots for the three leading principal components. The first
 figure corresponds to the inCitaion adjacent matrix $A$, the second figure 
