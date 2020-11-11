@@ -135,9 +135,46 @@ adjacent matrix $\hat{A}$.
 They both have a gap between the third and the forth eigenvalue, so there
 are at least 3 reasonable classes here. We can pick $k = 3$, and plot their top
 three principal components in Figure 3. For the figure on the left, there are clear
-$L$???shapes in each scatter plots. However for the figure on the right, the scatter
-plot on the left bottom corner doesn't have a prefect $L$???shape which indicates
+$L$-shapes in each scatter plots. However for the figure on the right, the scatter
+plot on the left bottom corner doesn't have a prefect $L$-shape which indicates
 the rank greater than 3. Indeed, it's unreliable to guess the rank k by simply
 observing the gap on the scree plot, so we redo the clustering by analyzing the
 paper abstracts using bag-of-words, and we don't mind the eigengap in this way.
 
+Figure 3: The scatter plots for the three leading principal components. The
+figure on left corresponds to the inCitaion adjacent matrix $A$, the figure on
+right corresponds to the outCitaion adjacent matrix $\hat{A}$.
+
+For the inCitation network, we find 3 meaningful clusters(see Figure 4).
+
+* V1: statistics
+* V2: proteomics
+* V3: genetics
+
+For the outCitation network, we find 7 meaningful clusters(see Figure 5).
+
+* V1: hypothesis testing
+* V2: proteomics
+* V3: gene expression
+* V4: genetic variations in human
+* V5: genetic variations in plant
+* V6: regression
+* V7: DNA methylation
+
+These two clustering results are consistent since V1&V6 in Figure 5 is in statistics 
+field and V3-V5&V7 are in genetics field. However the latter one provide more 
+detailed clusters.
+
+Figure 5: The bag-of-words reults with k = 7. Each column contains the top
+twenty representative words in the cluster.
+
+## References
+
+[1] Yoav Benjamini and Yosef Hochberg. Controlling the false discovery rate:
+a practical and powerful approach to multiple testing. Journal of the Royal
+statistical society: series B (Methodological), 57(1):289-300, 1995.
+
+[2] Karl Rohe and Muzhe Zeng. Vintage factor analysis with varimax performs
+statistical inference. arXiv preprint arXiv:2004.05387, 2020.
+
+[3] Song Wang and Karl Rohe. Don't mind the (eigen) gap.
