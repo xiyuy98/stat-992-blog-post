@@ -245,13 +245,18 @@ Figure 3: The scatter plots for the three leading principal components. The firs
 figure corresponds to the inCitaion adjacent matrix $A$, the second figure 
 corresponds to the outCitaion adjacent matrix $\hat{A}$.
 
-For the inCitation network, we find 3 meaningful clusters(see Figure 4).
+For the inCitation network, we find 3 meaningful clusters(see Table 1).
 
 * V1: statistics
 * V2: proteomics
 * V3: genetics
 
-For the outCitation network, we find 7 meaningful clusters(see Figure 5).
+
+
+Table 1: The bag-of-words reults with k = 3. Each column contains the top
+twenty representative words in the cluster.
+
+For the outCitation network, we find 7 meaningful clusters(see Table 2).
 
 * V1: hypothesis testing
 * V2: proteomics
@@ -261,15 +266,21 @@ For the outCitation network, we find 7 meaningful clusters(see Figure 5).
 * V6: regression
 * V7: DNA methylation
 
-These two clustering results are consistent since V1&V6 in Figure 5 is in statistics 
+Table 2: The bag-of-words reults with k = 7. Each column contains the top
+twenty representative words in the cluster.
+
+These two clustering results are consistent since V1&V6 in Table 2 is in statistics 
 field and V3-V5&V7 are in genetics field. However the latter one provide more 
 detailed clusters.
 
 Inspired the bag-of-words results above, we redo the vsp on the outCitation
 adjacent matrix with rank 7.
 
-Figure 5: The bag-of-words reults with k = 7. Each column contains the top
-twenty representative words in the cluster.
+![GitHub Logo](/images/vsp_out_(rank=7).png)
+
+Figure 4:  The scatter plots for the seven leading principal components 
+corresponds to the outCitaion adjacent matrix $\hat{A}$.
+
 
 ## References
 
