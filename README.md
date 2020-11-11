@@ -212,6 +212,8 @@ keypapers_in %>% t %>% View
 Our target dataset(see Figture 1) contains 8787 papers with 11 variables: id,
 title, abstract, year, field, author, inCitation, outCitation, journalName, journalVolume, journalPages.
 
+![GitHub Logo](images/hist_year.png)
+
 Figure 1: The histogram of year of the target dataset: the first paper is released
 in 1995 and there is a clear increase trend along the time.
 
