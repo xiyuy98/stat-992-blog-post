@@ -35,9 +35,9 @@ year and the regression along the time (in the next step toward the project).
 
 We use a set of three R packages to conduct the analysis. *tidyverse* for 
 subsetting and aggregating data sets, and managing the data in an effective 
-format (tibble), *tidytext* for dividing text (or list) into 
+format (tibble); *tidytext* for dividing text (or list) into 
 tokens (e.g., words, paper ids, etc.) and converting the resulted edgelist into 
-a document-token sparse matrix, *vsp* for applying vintage sparse principle 
+a document-token sparse matrix; *vsp* for applying vintage sparse principle 
 component analysis (VSP) on the obtained sparse matrix.
 
 ### 2.2 Building the dataset
