@@ -31,13 +31,14 @@ year and the regression along the time (in the next step toward the project).
 
 ## 2 The implementation
 
-The coding provided below is adapted from the scripts on Karl Rohe's GitHub
-repository, semanticScholar.
+### 2.1 Loading packages
+We mainly use three R packages 
 
-### 2.1 Building the dataset
+### 2.2 Building the dataset
 
 We filter the target papers from the raw data and rewrite them into csv in this
-step.
+step. The coding provided below is adapted from the scripts on Karl Rohe's GitHub
+repository, semanticScholar.
 
 Using function processDataFiles(includeLine, processLine, outputPath) for scanning 
 through the raw data.
@@ -83,7 +84,7 @@ outputPath = "FDR"
 processDataFiles(includeLine, processLine, outputPath)
 ```
 
-### 2.2 Clustering by VSP
+### 2.3 Clustering by VSP
 
 **STEP 1**: We construct the adjacent matrix A of paper-inCitations network,
 namely, <a href="https://www.codecogs.com/eqnedit.php?latex=A_{ij}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?A_{ij}" title="A_{ij}" /></a> indicates the Paper i is cited by paper j.
@@ -181,7 +182,7 @@ plot(fa_out$d)
 plot(fa_in$d)
 ```
 
-### 2.3 Clustering by BFF
+### 2.4 Clustering by BFF
 
 By using BFF, we partition citation graph and interpret the clusters by analyzing 
 the paper abstracts using bag-of-words. This algorithm was introduced by
@@ -190,7 +191,37 @@ the difference of proportion of abstracts containing some words or not.
 
 **Step1**: we simplify the inCitation adjacent matrix A and apply the function bff().
 
+The function, bff(), is developed by Alex Hayes and Fan Chen, and posted under Karl 
+Rohe's GitHub repository, vsp.
+
 ```r
+# function, bff()
+bff.default <-  function(loadings, features, num_best, ...) {
+  
+  loadings[loadings < 0] <-  0
+  k <- ncol(loadings)
+  
+  best_feat <- matrix("", ncol = k, nrow = num_best)
+  
+  ## normalize the cluster to a probability distribution (select one member at random)
+  nc <- apply(loadings, 2, l1_normalize)
+  nOutC <- apply(loadings == 0, 2, l1_normalize)
+  
+  inCluster <- sqrt(crossprod(features, nc))
+  outCluster <- sqrt(crossprod(features, nOutC))
+  
+  # diff is d x K, element [i,j] indicates importance of i-th feature to j-th block
+  # contrast: sqrt(A) - sqrt(B), variance stabilization
+  diff <-  inCluster - outCluster
+  
+  for (j in 1:k) {
+    bestIndex <-  order(-diff[,j])[1:num_best]
+    best_feat[,j] <-  colnames(features[, bestIndex])
+  }
+  
+  best_feat
+}
+
 # simplify matrix, A_abs, for bff on incitations
 id_in = edgeList_in %>% select(id) %>% unique()
 id_in = id_in$id
