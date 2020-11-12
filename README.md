@@ -13,7 +13,7 @@ million papers and over 100Gb meta data. We study the citation network and
 term-abstract network on this massive collection of academic publications.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This post is an starting example toward our course project, and we focus
-on all papers relate to a good technique "false discovery rate" or "FDA" in
+on all papers relate to a good sample technique "false discovery rate" or "FDA" in
 short here. The FDR conceptualize the rate of type I errors in null hypothesis
 testing with multiple comparisons. The FDR was first formally introduced by
 Benjamini and Hochberg in 1995 [1]. It has been particularly influential and
@@ -86,9 +86,9 @@ processDataFiles(includeLine, processLine, outputPath)
 ### 2.2 Clustering by VSP
 
 **STEP 1**: We construct the adjacent matrix A of paper-inCitations network,
-namely, ![GitHub Logo](/images/A.jpg) indicates the Paper i is cited by paper j.
+namely, <a href="https://www.codecogs.com/eqnedit.php?latex=A_{ij}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?A_{ij}" title="A_{ij}" /></a> indicates the Paper i is cited by paper j.
 
-We achieve this by building the vertex set $E$ and edge set $V$ , and combine them
+We achieve this by building the vertex set E and edge set V, and combine them
 using function cast_sparse():
 
 ```r
@@ -124,10 +124,8 @@ edgeList_in = edgeList_in %>%
 adjMatrix = cast_sparse(edgeList_in, id, inCitation)
 ```
 
-**STEP 2**: We repeat this step and construct the the adjacent matrix $\hat{A}$ of
-paper-outCitations network,
-
-$$\hat{A}_{ij} = \mathbb{1} (\text{Paper } i \text{ cites paper } j)$$
+**STEP 2**: We repeat step 1 and construct the the adjacent matrix B of
+paper-outCitations network, namely,  <a href="https://www.codecogs.com/eqnedit.php?latex=B_{ij}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?B_{ij}" title="B_{ij}" /></a> indicates the Paper i cites paper j.
 
 **STEP 3**: We repeat the above step and build the the adjacent matrix $\tilde{A}$ of
 paper-abstract network,
@@ -156,7 +154,7 @@ We will not apply VSP on this matrix. Instead, we will use this matrix as an
 external information to illustrate the features of clusters in paper-inCitations
 network and paper-outCitations network.
 
-**STEP 4**: Finally, we apply the VSP on the adjacency matrix $A$ (and $\hat{A}$ respectively).
+**STEP 4**: Finally, we apply the VSP on the adjacency matrix A (and B respectively).
 
 The VSP is a spectral method that combines principal components analysis
 (PCA) with the varimax rotation. This algorithm was introduced by Rohe and
@@ -168,7 +166,7 @@ singular vectors; rotating these singular vectors to achieve the maximize
 Varimax. The centering step is optimal, but it can surprising speed up the 
 algorithm when the matrix is sparse.
 
-We Apply function vsp() and set rank $k = 3$ for $A$ ($\hat{A}$, respectively).
+We Apply function vsp() and set rank k = 6 for A (k=5 for B, respectively).
 
 ```r
 # apply vsp
@@ -190,7 +188,7 @@ the paper abstracts using bag-of-words. This algorithm was introduced by
 Wang and Rohe [3]. The main idea of BFF is finding the clusters that maximize
 the difference of proportion of abstracts containing some words or not.
 
-**Step1**: we simplify the inCitation adjacent matrix $A$ and apply the function bff().
+**Step1**: we simplify the inCitation adjacent matrix A and apply the function bff().
 
 ```r
 # simplify matrix, A_abs, for bff on incitations
@@ -203,7 +201,7 @@ keypapers_in = bff(fa_in$Z, A_abs_in, 20) %>% t ## cluster by rows (fa$Z)
 keypapers_in %>% t %>% View
 ```
 
-**Step2**: we repeat the previous step on outCitation adjacent matrix $\hat{A}$.
+**Step2**: we repeat the previous step on outCitation adjacent matrix B.
 
 ## 3 The results
 
@@ -215,7 +213,7 @@ title, abstract, year, field, author, inCitation, outCitation, journalName, jour
 Figure 1: The histogram of year of the target dataset: the first paper is released
 in 1995 and there is a clear increase trend along the time.
 
-After the clustering by vsp, we show the scree plots with rank $k = 30$ in
+After the clustering by vsp, we show the scree plots with rank k = 30 in
 Figure 2.
 
 ![GitHub Logo](/images/screeplot_in_(rank=30).png)
@@ -223,14 +221,14 @@ Figure 2.
 ![GitHub Logo](/images/screeplot_out_(rank=30).png)
 
 Figure 2: The scree plots with rank 30. The first figure corresponds to the
-inCitaion adjacent matrix $A$, the second figure corresponds to the outCitaion
-adjacent matrix $\hat{A}$.
+inCitaion adjacent matrix A, the second figure corresponds to the outCitaion
+adjacent matrix B.
 
 They both have a gap between the third and the forth eigenvalue, so there
-are at least 3 reasonable classes here. We can pick $k = 3$, and plot their top
+are at least 3 reasonable classes here. We can pick k = 3, and plot their top
 three principal components in Figure 3. For the figure on the left, there are clear
-$L$-shapes in each scatter plots. However for the figure on the right, the scatter
-plot on the left bottom corner doesn't have a prefect $L$-shape which indicates
+L-shapes in each scatter plots. However for the figure on the right, the scatter
+plot on the left bottom corner doesn't have a prefect L-shape which indicates
 the rank greater than 3. Indeed, it's unreliable to guess the rank k by simply
 observing the gap on the scree plot, so we redo the clustering by analyzing the
 paper abstracts using bag-of-words, and we don't mind the eigengap in this way.
@@ -240,8 +238,8 @@ paper abstracts using bag-of-words, and we don't mind the eigengap in this way.
 ![GitHub Logo](/images/vsp_out_(rank=3).png)
 
 Figure 3: The scatter plots for the three leading principal components. The first
-figure corresponds to the inCitaion adjacent matrix $A$, the second figure 
-corresponds to the outCitaion adjacent matrix $\hat{A}$.
+figure corresponds to the inCitaion adjacent matrix A, the second figure 
+corresponds to the outCitaion adjacent matrix B.
 
 For the inCitation network, we find 3 meaningful clusters (see Table 1).
 
@@ -328,7 +326,7 @@ adjacent matrix with rank 7.
 ![GitHub Logo](/images/vsp_out_(rank=7).png)
 
 *Figure 4:  The scatter plots for the seven leading principal*
-*components corresponds to the outCitaion adjacent matrix $\hat{A}$.*
+*components corresponds to the outCitaion adjacent matrix B.*
 
 
 ## References
