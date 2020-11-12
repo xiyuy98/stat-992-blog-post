@@ -32,7 +32,13 @@ year and the regression along the time (in the next step toward the project).
 ## 2 The implementation
 
 ### 2.1 Loading packages
-We mainly use three R packages 
+
+We use a set of three R packages to conduct the analysis. *tidyverse* for 
+subsetting and aggregating data sets, and managing the data in an effective 
+format (tibble), *tidytext* for dividing text (or list) into 
+tokens (e.g., words, paper ids, etc.) and converting the resulted edgelist into 
+a document-token sparse matrix, *vsp* for applying vintage sparse principle 
+component analysis (VSP) on the obtained sparse matrix.
 
 ### 2.2 Building the dataset
 
@@ -164,7 +170,7 @@ assumptions, the VSP estimator is consistent for degree-corrected Stochastic
 Blockmodels. Roughly, the algorithm contains three steps: centering the matrix; 
 applying singular value decomposition(SVD) to get the top k left and right
 singular vectors; rotating these singular vectors to achieve the maximize 
-Varimax. The centering step is optimal, but it can surprising speed up the 
+Varimax. The centering step is optimal, but it can surprisingly speed up the 
 algorithm when the matrix is sparse.
 
 We Apply function vsp() and set rank k = 6 for A (k=5 for B, respectively).
@@ -241,8 +247,8 @@ title, abstract, year, field, author, inCitation, outCitation, journalName, jour
 
 ![GitHub Logo](images/hist_year.png)
 
-Figure 1: The histogram of year of the target dataset: the first paper is released
-in 1995 and there is a clear increase trend along the time.
+*Figure 1: The histogram of year of the target dataset: the first paper is released*
+*in 1995 and there is a clear increase trend along the time.*
 
 After the clustering by vsp, we show the scree plots with rank k = 30 in
 Figure 2.
@@ -251,9 +257,9 @@ Figure 2.
 
 ![GitHub Logo](/images/screeplot_out_(rank=30).png)
 
-Figure 2: The scree plots with rank 30. The first figure corresponds to the
-inCitaion adjacent matrix A, the second figure corresponds to the outCitaion
-adjacent matrix B.
+*Figure 2: The scree plots with rank 30. The first figure corresponds to the*
+*inCitaion adjacent matrix A, the second figure corresponds to the outCitaion*
+*adjacent matrix B.*
 
 They both have a gap between the third and the forth eigenvalue, so there
 are at least 3 reasonable classes here. We can pick k = 3, and plot their top
@@ -268,9 +274,9 @@ paper abstracts using bag-of-words, and we don't mind the eigengap in this way.
 
 ![GitHub Logo](/images/vsp_out_(rank=3).png)
 
-Figure 3: The scatter plots for the three leading principal components. The first
-figure corresponds to the inCitaion adjacent matrix A, the second figure 
-corresponds to the outCitaion adjacent matrix B.
+*Figure 3: The scatter plots for the three leading principal components. The first*
+*figure corresponds to the inCitaion adjacent matrix A, the second figure* 
+*corresponds to the outCitaion adjacent matrix B.*
 
 For the inCitation network, we find 3 meaningful clusters (see Table 1).
 
@@ -302,8 +308,8 @@ For the inCitation network, we find 3 meaningful clusters (see Table 1).
 |paper|proteomic|snps|
 
 
-Table 1: The bag-of-words reults with k = 3. Each column contains the top
-twenty representative words in the cluster.
+*Table 1: The bag-of-words reults with k = 3. Each column contains the top*
+*twenty representative words in the cluster.*
 
 For the outCitation network, we find 7 meaningful clusters(see Table 2).
 
