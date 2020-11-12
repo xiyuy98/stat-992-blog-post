@@ -127,7 +127,7 @@ adjMatrix = cast_sparse(edgeList_in, id, inCitation)
 **STEP 2**: We repeat step 1 and construct the the adjacent matrix B of
 paper-outCitations network, namely,  <a href="https://www.codecogs.com/eqnedit.php?latex=B_{ij}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?B_{ij}" title="B_{ij}" /></a> indicates the Paper i cites paper j.
 
-**STEP 3**: We repeat the above step and build the the adjacent matrix $\tilde{A}$ of
+**STEP 3**: We repeat the above step and build the the adjacent matrix <a href="https://www.codecogs.com/eqnedit.php?latex=\widetilde&space;A" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\widetilde&space;A" title="\widetilde A" /></a> of
 paper-abstract network,
 
 To construct this matrix, we first remove all the numbers from the abstracts
