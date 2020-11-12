@@ -7,7 +7,7 @@
 
 ## 1 The background and main question
 
-Semantic Scholar Open Research Corpus contains research papers published in
+Semantic Scholar Open Research Corpus is a public data set containing research papers published in
 all fields and is provided as an easy-to-use JSON archive. There are about 220
 million papers and over 100Gb meta data. We study the citation network and
 term-abstract network on this massive collection of academic publications.
